@@ -1,0 +1,362 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #dddddd;
+    color: #444444;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+    max-width: 420px;
+    padding: 15px;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+input, select, button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #8EC5FC;
+    box-shadow: 0 0 0 3px rgba(142, 197, 252, 0.2);
+}
+
+.color-pickers {
+    display: flex;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.color-pickers button {
+    flex: 1;
+    cursor: pointer;
+    background: #f0f0f0;
+    border: none;
+    font-weight: 500;
+}
+
+.color-pickers button:hover {
+    background: #e0e0e0;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background: linear-gradient(to bottom, #8bffa8, #6bffc9);
+    border-radius: 15px;
+    width: fit-content;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.badge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2.14px solid #FFFFFF;
+    border-radius: inherit; /* Наследуем от родителя */
+    pointer-events: none;
+    box-sizing: border-box;
+    opacity: 0.25; /* 25% прозрачности как в вашем примере */
+}
+
+/* Эффекты теней для всех элементов */
+.icon-container, 
+.text-container,
+.icon,
+.text-primary,
+.text-secondary {
+    filter: drop-shadow(0 0 5.6px rgba(0, 0, 0, 0.25));
+}
+
+/* Стили для разных видов баджей */
+.cozy-minimal {
+    gap: 18px;
+    height: 56px;
+}
+
+.cozy-ava {
+    gap: 0;
+    background: linear-gradient(to bottom, #8bffa8, #6bffc9);
+    /*padding: 20px;*/
+    height: 56px;
+}
+
+.compact-minimal {
+    /*gap: 12px;*/
+    /*padding: 10px;*/
+    height: 40px;
+}
+
+.compact-ava {
+    gap: 0;
+    /*padding: 15px;*/
+    background: linear-gradient(to bottom, #8bffa8, #6bffc9);
+    height: 40px;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    background-color: transparent; /* Убираем белый фон */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    margin: 8px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5px
+}
+
+.text-primary {
+    font-size: 16px;
+    /*font-weight: 700;*/
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.text-secondary {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Стили для компактных баджей */
+.compact-minimal .text-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Стили для Ava баджей */
+.cozy-ava .text-container,
+.compact-ava .text-container {
+    display: none;
+}
+
+.cozy-ava .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px; /* Квадратные с закруглёнными углами */
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+}
+
+.compact-ava .icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Анимация при наведении */
+.badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+/* ... (предыдущие стили остаются) ... */
+
+/* Новые стили для элементов управления текстом */
+.text-control-group {
+    margin-bottom: 15px;
+}
+
+.text-format-controls {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.format-btn {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.format-btn.bold {
+    font-weight: 900;
+}
+
+.format-btn.italic {
+    font-style: italic;
+}
+
+.format-btn.active {
+    background: #e0e0e0;
+}
+
+.color-picker-text {
+    padding: 5px 10px;
+    background: rgb(255, 255, 255);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+.pickr .pcr-button {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
+}
+
+#download-btn {
+    margin-top: 20px;
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#download-btn:hover {
+    background: #45a049;
+}
+/* Галерея примеров */
+.gallery {
+    margin-top: 50px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.gallery h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.examples-grid img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.examples-grid img:hover {
+    transform: scale(1.03);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .examples-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .controls {
+        max-width: 100%;
+    }
+}
+
+.language-selector {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.language-selector select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* Стили для кнопки и модального окна */
+.language-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1001;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    max-width: 90%;
+}
+
+.language-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.language-options button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.language-options button:hover {
+    background: #f0f0f0;
+}

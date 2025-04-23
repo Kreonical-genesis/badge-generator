@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gen-badge</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="app-title">Badge Generator</h1>
+        
+        <div class="controls">
+            <input type="file" id="avatar" accept="image/*">
+            
+            <div class="text-control-group">
+                <input type="text" id="text-main" placeholder="Main text">
+                <div class="text-format-controls">
+                    <button class="format-btn bold" data-target="primary">Ж</button>
+                    <button class="format-btn italic" data-target="primary">К</button>
+                    <button class="color-picker-text" data-target="primary">Цвет</button>
+                </div>
+            </div>
+            
+            <div class="text-control-group">
+                <input type="text" id="text-secondary" placeholder="Secondary text">
+                <div class="text-format-controls">
+                    <button class="format-btn bold" data-target="secondary">Ж</button>
+                    <button class="format-btn italic" data-target="secondary">К</button>
+                    <button class="color-picker-text" data-target="secondary">Цвет</button>
+                </div>
+            </div>
+            
+            <select id="badge-style">
+                <option value="cozy-minimal">Cozy Minimal</option>
+                <option value="cozy-ava">Cozy Ava</option>
+                <option value="compact-minimal">Compact Minimal</option>
+                <option value="compact-ava">Compact Ava</option>
+            </select>
+            
+            <div class="color-pickers">
+                <button id="color1-btn">gradient1</button>
+                <button id="color2-btn">gradient2</button>
+            </div>
+            
+            <button id="download-btn">Save Badge</button>
+        </div>
+        
+        <div id="badge-preview" class="badge cozy-minimal">
+            <div class="icon-container">
+                <div class="icon"></div>
+            </div>
+            <div class="text-container">
+                <div class="text-primary">Requires</div>
+                <div class="text-secondary">Kreo_gen</div>
+            </div>
+        </div>
+        
+        <div id="language-modal" class="modal">
+            <div class="modal-content">
+                <h3>language switch</h3>
+                <div class="language-option" data-lang="ru">Русский</div>
+                <div class="language-option" data-lang="en">English</div>
+                <div class="language-option" data-lang="es">Español</div>
+            </div>
+        </div>
+        
+        <button id="language-btn" class="language-btn">🌐</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="js/all.js"></script>
+</body>
+</html>
