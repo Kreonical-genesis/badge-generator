@@ -185,9 +185,7 @@ input:focus, select:focus {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
-/* ... (предыдущие стили остаются) ... */
 
-/* Новые стили для элементов управления текстом */
 .text-control-group {
     margin-bottom: 15px;
 }
@@ -279,7 +277,7 @@ input:focus, select:focus {
     transform: scale(1.03);
 }
 
-/* Адаптивность */
+/* Адаптивность  */
 @media (max-width: 768px) {
     .examples-grid {
         grid-template-columns: 1fr;
@@ -288,75 +286,4 @@ input:focus, select:focus {
     .controls {
         max-width: 100%;
     }
-}
-
-.language-selector {
-    text-align: right;
-    margin-bottom: 20px;
-}
-
-.language-selector select {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-}
-
-/* Стили для кнопки и модального окна */
-.language-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #4CAF50;
-    color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 1001;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    max-width: 90%;
-}
-
-.language-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.language-options button {
-    padding: 10px;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.language-options button:hover {
-    background: #f0f0f0;
 }

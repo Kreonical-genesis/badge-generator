@@ -1,42 +1,3 @@
-//import translations from '../locales/ru.json';
-
-function initLanguageSwitcher() {
-    const elements = {
-        title: document.getElementById('app-title'),
-        mainText: document.getElementById('text-main'),
-        secondaryText: document.getElementById('text-secondary'),
-        downloadBtn: document.getElementById('download-btn'),
-        color1Btn: document.getElementById('color1-btn'),
-        color2Btn: document.getElementById('color2-btn'),
-        modal: document.getElementById('language-modal'),
-        langBtn: document.getElementById('language-btn')
-    };
-
-    elements.langBtn.addEventListener('click', () => {
-        elements.modal.style.display = 'flex';
-    });
-
-    elements.modal.addEventListener('click', (e) => {
-        if (e.target.classList.contains('language-option')) {
-            updateTranslations(e.target.dataset.lang);
-            elements.modal.style.display = 'none';
-        }
-        if (e.target === elements.modal) {
-            elements.modal.style.display = 'none';
-        }
-    });
-
-    function updateTranslations(lang) {
-        // Здесь будет загрузка переводов из JSON-файла
-        // Пока используем стандартные переводы
-        elements.title.textContent = translations.title;
-        elements.mainText.placeholder = translations.mainText;
-        elements.secondaryText.placeholder = translations.secondaryText;
-        elements.downloadBtn.textContent = translations.download;
-        elements.color1Btn.textContent = translations.color1;
-        elements.color2Btn.textContent = translations.color2;
-    }
-}
 function initBadgeGenerator() {
     const badgePreview = document.getElementById('badge-preview');
     const icon = document.querySelector('.icon');
@@ -194,7 +155,6 @@ document.querySelectorAll('.format-btn').forEach(btn => {
     });
 });
 document.addEventListener('DOMContentLoaded', () => {
-    initLanguageSwitcher();
     initBadgeGenerator();
     initColorPickers();
 });
