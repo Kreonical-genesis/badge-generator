@@ -9,51 +9,121 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="app-title">Badge Generator</h1>
-        
         <div class="controls">
-            <input type="file" id="avatar" accept="image/*">
-            
-            <div class="text-control-group">
-                <input type="text" id="text-main" placeholder="Main text">
-                <div class="text-format-controls">
-                    <button class="format-btn bold" data-target="primary">B</button>
-                    <button class="format-btn italic" data-target="primary">I</button>
-                    <button class="color-picker-text" data-target="primary">color</button>
+            <div class="upload-container">
+                <input type="file" id="avatar" accept="image/*" class="file-input">
+                <label for="avatar" class="file-label">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="upload-icon">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    Drag image here or <span>choose file</span>
+                </label>
+            </div>
+        
+            <div class="settings">
+                <div class="settings-category">
+                    <button class="category-title">Icon</button>
+                    <div class="category-content">
+                        <div class="control-group">
+                            <label for="icon-size">Size (px):</label>
+                            <input type="number" id="icon-size" value="0" min="0" max="100">
+                        </div>
+                        <div class="control-group">
+                            <label>Shadow:</label>
+                            <label><input type="checkbox" id="icon-drop-shadow" checked> Drop Shadow</label>
+                            <input type="text" id="icon-drop-shadow-value" value="0 0 4px rgba(0, 0, 0, 0.6)">
+                        </div>
+                        <div class="control-group">
+                            <label for="icon-border-radius-percent">Rounding (%):</label>
+                            <input type="number" id="icon-border-radius-percent" value="0" min="0" max="100">
+                        </div>
+                        <div class="control-group">
+                            <label>Box Shadow:</label>
+                            <input type="text" id="icon-box-shadow" value="0 2px 8px rgba(0,0,0,0.4)">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="settings-category">
+                    <button class="category-title">Text-primary</button>
+                    <div class="category-content">
+                        <div class="text-control-group">
+                            <input type="text" id="text-main" placeholder="Main text">
+                            <div class="text-format-controls">
+                                <button class="format-btn bold" data-target="primary">B</button>
+                                <button class="format-btn italic" data-target="primary">I</button>
+                                <button class="color-picker-text" data-target="primary">color</button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="font-family-primary">Font:</label>
+                            <input type="text" id="font-family-primary" placeholder="Font name">
+                            <small>Enter font name (e.g., Arial, sans-serif, 'Times New Roman')</small>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="settings-category">
+                    <button class="category-title">Text-secondary</button>
+                    <div class="category-content">
+                        <div class="text-control-group">
+                            <input type="text" id="text-secondary" placeholder="Secondary text">
+                            <div class="text-format-controls">
+                                <button class="format-btn bold" data-target="secondary">B</button>
+                                <button class="format-btn italic" data-target="secondary">I</button>
+                                <button class="color-picker-text" data-target="secondary">color2</button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="font-family-secondary">Font:</label>
+                            <input type="text" id="font-family-secondary" placeholder="Font name">
+                            <small>Enter font name (e.g., Arial, sans-serif, 'Times New Roman')</small>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="settings-category">
+                    <button class="category-title">Badge</button>
+                    <div class="category-content">
+                        <select id="badge-style">
+                            <option value="cozy-minimal">Cozy Minimal</option>
+                            <option value="cozy-ava">Cozy Ava</option>
+                            <option value="compact-minimal">Compact Minimal</option>
+                            <option value="compact-ava">Compact Ava</option>
+                        </select>
+                        <div class="color-pickers">
+                            <button id="color1-btn">gradient1</button>
+                            <button id="color2-btn">gradient2</button>
+                        </div>
+                        <div class="control-group">
+                            <label for="badge-border-radius-percent">Rounding (%):</label>
+                            <input type="number" id="badge-border-radius-percent" value="10" min="0" max="100">
+                        </div>
+                        <div class="control-group">
+                            <label>Box Shadow:</label>
+                            <input type="text" id="badge-box-shadow" value="0 6px 20px var(--badge-shadow)">
+                        </div>
+                        <div class="control-group">
+                            <label>Border:</label>
+                            <input type="text" id="badge-border" value="2px solid var(--badge-border-color)">
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="text-control-group">
-                <input type="text" id="text-secondary" placeholder="Secondary text">
-                <div class="text-format-controls">
-                    <button class="format-btn bold" data-target="secondary">B</button>
-                    <button class="format-btn italic" data-target="secondary">I</button>
-                    <button class="color-picker-text" data-target="secondary">color2</button>
-                </div>
-            </div>
-            
-            <select id="badge-style">
-                <option value="cozy-minimal">Cozy Minimal</option>
-                <option value="cozy-ava">Cozy Ava</option>
-                <option value="compact-minimal">Compact Minimal</option>
-                <option value="compact-ava">Compact Ava</option>
-            </select>
-            
-            <div class="color-pickers">
-                <button id="color1-btn">gradient1</button>
-                <button id="color2-btn">gradient2</button>
-            </div>
-            
+        
             <button id="download-btn">Save Badge</button>
         </div>
-        
-        <div id="badge-preview" class="badge cozy-minimal">
-            <div class="icon-container">
-                <div class="icon"></div>
-            </div>
-            <div class="text-container">
-                <div class="text-primary">Requires</div>
-                <div class="text-secondary">Kreo_gen</div>
+
+        <div class="badge-preview-container">
+            <input type="range" id="zoom-slider" min="0.5" max="2" step="0.1" value="1">
+            <div id="badge-preview" class="badge cozy-minimal">
+                <div class="icon-container">
+                    <div class="icon"></div>
+                </div>
+                <div class="text-container">
+                    <div class="text-primary">Requires</div>
+                    <div class="text-secondary">Kreo_gen</div>
+                </div>
             </div>
         </div>
     </div>
