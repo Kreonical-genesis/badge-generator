@@ -120,15 +120,6 @@ select:focus {
     opacity: 0.3;
 }
 
-.icon-container,
-.text-container,
-.icon,
-.text-primary,
-.text-secondary {
-    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
-}
-
-
 .cozy-minimal {
     gap: 14px;
     height: 48px;
@@ -163,7 +154,6 @@ select:focus {
     background-repeat: no-repeat;
     border-radius: 6px;
     background-color: transparent;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     margin: 6px;
 }
 
