@@ -25,6 +25,11 @@
                     <button class="category-title">Icon</button>
                     <div class="category-content">
                         <div class="control-group">
+                            <label>
+                                <input type="checkbox" id="icon-auto-height"> Auto Height
+                            </label>
+                        </div>
+                        <div class="control-group">
                             <label for="icon-size">Size (px):</label>
                             <input type="number" id="icon-size" value="0" min="0" max="100">
                         </div>
@@ -53,12 +58,13 @@
                                 <button class="format-btn bold" data-target="primary">B</button>
                                 <button class="format-btn italic" data-target="primary">I</button>
                                 <button class="color-picker-text" data-target="primary">color</button>
+                                
                             </div>
                         </div>
                         <div class="control-group">
                             <label for="font-family-primary">Font:</label>
                             <input type="text" id="font-family-primary" placeholder="Font name">
-                            <small>Enter font name (e.g., Arial, sans-serif, 'Times New Roman')</small>
+                            <small>Enter font name (e.g., Minecraft, Arial, 'Times New Roman')</small>
                         </div>
                     </div>
                 </div>
@@ -77,7 +83,7 @@
                         <div class="control-group">
                             <label for="font-family-secondary">Font:</label>
                             <input type="text" id="font-family-secondary" placeholder="Font name">
-                            <small>Enter font name (e.g., Arial, sans-serif, 'Times New Roman')</small>
+                            <small>Enter font name (e.g., Minecraft, Arial, 'Times New Roman')</small>
                         </div>
                     </div>
                 </div>
@@ -99,13 +105,79 @@
                             <label for="badge-border-radius-percent">Rounding (%):</label>
                             <input type="number" id="badge-border-radius-percent" value="22.22222222222222222222222" min="0" max="100">
                         </div>
-                        <div class="control-group">
-                            <label>Box Shadow:</label>
-                            <input type="text" id="badge-box-shadow" value="0 6px 20px var(--badge-shadow)">
+                        <div class="settings-group">
+                            <label class="group-title">Box Shadow</label>
+                            <div class="control-group">
+                                <label for="badge-shadow-offset-x">Offset X (px):</label>
+                                <input type="number" id="badge-shadow-offset-x" value="0">
+                            </div>
+                            <div class="control-group">
+                                <label for="badge-shadow-offset-y">Offset Y (px):</label>
+                                <input type="number" id="badge-shadow-offset-y" value="6">
+                            </div>
+                            <div class="control-group">
+                                <label for="badge-shadow-blur">Blur (px):</label>
+                                <input type="number" id="badge-shadow-blur" value="20">
+                            </div>
+                            <div class="control-group">
+                                <label for="badge-shadow-spread">Spread (px):</label>
+                                <input type="number" id="badge-shadow-spread" value="0">
+                            </div>
+                            <div class="control-group">
+                                <label for="badge-shadow-color">Color:</label>
+                                <button id="badge-shadow-color-btn">Choose Color</button>
+                                <input type="hidden" id="badge-shadow-color-value" value="rgba(0,0,0,0.4)">
+                            </div>
+                            <div class="control-group">
+                                <label>Type:</label>
+                                <select id="badge-shadow-type">
+                                    <option value="">Outer</option>
+                                    <option value="inset">Inner</option>
+                                </select>
+                            </div>
+                            <div class="settings-group">
+                                <label class="group-title">Border</label>
+                                <div class="control-group">
+                                    <label for="badge-border-width">Width (px):</label>
+                                    <input type="number" id="badge-border-width" value="0" min="0">
+                                </div>
+                                <div class="control-group">
+                                    <label for="badge-border-style">Style:</label>
+                                    <select id="badge-border-style">
+                                        <option value="solid">Solid</option>
+                                        <option value="dashed">Dashed</option>
+                                        <option value="dotted">Dotted</option>
+                                        <option value="double">Double</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="badge-border-color">Color:</label>
+                                    <button id="badge-border-color-btn">Choose Color</button>
+                                    <input type="hidden" id="badge-border-color-value" value="var(--badge-border-color)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-category">
+                    <button class="category-title">Export</button>
+                    <div class="category-content">
+                        <div class="control-group styled-checkbox">
+                            <label>
+                                <input type="checkbox" id="show-export-area">
+                                <span class="checkmark"></span>
+                                Show Export Area
+                            </label>
                         </div>
                         <div class="control-group">
-                            <label>Border:</label>
-                            <input type="text" id="badge-border" value="2px solid var(--badge-border-color)">
+                            <label for="export-width">Export Width (% of Badge):</label>
+                            <input type="range" id="export-width" min="50" max="200" value="100" class="styled-slider">
+                            <span id="export-width-value">100%</span>
+                        </div>
+                        <div class="control-group">
+                            <label for="export-height">Export Height (% of Badge):</label>
+                            <input type="range" id="export-height" min="50" max="200" value="100" class="styled-slider">
+                            <span id="export-height-value">100%</span>
                         </div>
                     </div>
                 </div>
@@ -115,16 +187,21 @@
         </div>
 
         <div class="badge-preview-container">
-            <input type="range" id="zoom-slider" min="0.5" max="2" step="0.1" value="1">
-            <div id="badge-preview" class="badge cozy-minimal">
+            <div class="zoom-slider-container">
+                <div class="zoom-icon" id="zoom-out-icon" style="background-image: url('assets/img/zoom-out.png');"></div>
+                <input type="range" id="zoom-slider" min="0.5" max="2" step="0.1" value="1" class="styled-slider">
+                <div class="zoom-icon" id="zoom-in-icon" style="background-image: url('assets/img/zoom-in-button.png');"></div>
+            </div>
+            <div id="badge-preview" class="badge cozy-minimal" style="border-radius: 7.11111px; box-shadow: rgba(0, 0, 0, 0.4) 0px 6px 20px 0px; border: 9px solid var(--badge-border-color);">
                 <div class="icon-container">
-                    <div class="icon"></div>
+                    <div class="icon" style="border-radius: 0%;"></div>
                 </div>
                 <div class="text-container">
-                    <div class="text-primary">Requires</div>
-                    <div class="text-secondary">Kreo_gen</div>
+                    <div class="text-primary">Badge-generator</div>
+                    <div class="text-secondary">by Kreo_gen &amp; MrLemonHog</div>
                 </div>
             </div>
+            <div id="export-area-visualizer" style="border: 2px dashed rgba(0, 0, 0, 0.5); pointer-events: none; box-sizing: border-box; position: absolute;"></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
