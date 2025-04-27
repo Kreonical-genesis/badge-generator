@@ -233,29 +233,35 @@ function initBadgeGenerator() {
     });
 
     document.getElementById('download-btn').addEventListener('click', function() {
-        const badgeRect = badgePreview.getBoundingClientRect();
-        const widthPercent = parseInt(exportWidthSlider.value, 10) / 100;
-        const heightPercent = parseInt(exportHeightSlider.value, 10) / 100;
-
-        const captureWidth = badgeRect.width * widthPercent;
-        const captureHeight = badgeRect.height * heightPercent;
-        const captureX = (badgeRect.width - captureWidth) / 2;
-        const captureY = (badgeRect.height - captureHeight) / 2;
-
-        html2canvas(badgePreview, {
-            backgroundColor: null,
-            width: captureWidth,
-            height: captureHeight,
-            x: captureX,
-            y: captureY,
-            scale: window.devicePixelRatio || 1,
-            scrollX: 0,
-            scrollY: 0
-        }).then(canvas => {
-            const link = document.createElement('a');
-            link.download = 'minecraft-badge.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
+        const badgePreview = document.getElementById('badge-preview');
+    
+        const originalTransform = badgePreview.style.transform;
+        
+        badgePreview.style.transform = 'none';
+    
+        requestAnimationFrame(() => {
+            html2canvas(badgePreview, {
+                backgroundColor: null,
+                scale: window.devicePixelRatio * 2,
+                scrollX: 0,
+                scrollY: 0,
+            }).then(canvas => {
+                badgePreview.style.transform = originalTransform;
+    
+                const croppedCanvas = document.createElement('canvas');
+                croppedCanvas.width = canvas.width - 2;
+                croppedCanvas.height = canvas.height;
+                const ctx = croppedCanvas.getContext('2d');
+                ctx.drawImage(canvas, 0, 0);
+    
+                const link = document.createElement('a');
+                link.download = 'minecraft-badge.png';
+                link.href = croppedCanvas.toDataURL('image/png');
+                link.click();
+            }).catch(error => {
+                console.error('Ошибка захвата canvas:', error);
+                badgePreview.style.transform = originalTransform;
+            });
         });
     });
 
